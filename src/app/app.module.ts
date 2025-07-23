@@ -6,6 +6,7 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+// import { Health } from '@awesome-cordova-plugins/health/ngx';
 
 @NgModule({
   declarations: [AppComponent],

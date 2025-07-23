@@ -1,20 +1,99 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
+<ion-header>
+    <ion-toolbar color="primary">
+        <ion-title>Step Tracker</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content class="ion-padding" scroll="true">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Steps – Last 7 Days (Aggregated)</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <p><strong>Total Steps (7-day sum):</strong> {{ steps | number: '1.0-2' }} steps</p>
+
+            <ion-list *ngIf="stepsPerDay.length">
+                <ion-list-header>Daily Steps</ion-list-header>
+                <ion-item *ngFor="let item of stepsPerDay">
+                    <ion-label>
+                        <p><strong>{{ item.date }}</strong>: {{ item.value | number: '1.0-2' }} steps</p>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+
+            <p class="ion-margin-top"><strong>Steps Aggregated JSON:</strong></p>
+            <pre>{{ stepsRawJson }}</pre>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Distance – Last 7 Days (Aggregated)</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <p><strong>Total Distance (7-day sum):</strong> {{ distance | number: '1.0-2' }} meters</p>
+
+            <ion-list *ngIf="distancePerDay.length">
+                <ion-list-header>Daily Distances</ion-list-header>
+                <ion-item *ngFor="let item of distancePerDay">
+                    <ion-label>
+                        <p><strong>{{ item.date }}</strong>: {{ item.value | number: '1.0-2' }} meters</p>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+
+            <p class="ion-margin-top"><strong>Distance Aggregated JSON:</strong></p>
+            <pre>{{ distanceRawJson }}</pre>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Heart rate – Last 7 Days (Aggregated)</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <p><strong>Total Heart rate (7-day sum):</strong> {{ heartRate | number: '1.0-2' }} bpm</p>
+
+            <ion-list *ngIf="heartRatePerDay.length">
+                <ion-list-header>Daily Heart rate</ion-list-header>
+                <ion-item *ngFor="let item of heartRatePerDay">
+                    <ion-label>
+                        <p><strong>{{ item.date }}</strong>: {{ item.value | number: '1.0-2' }} bpm</p>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+
+            <p class="ion-margin-top"><strong>Heart rate Aggregated JSON:</strong></p>
+            <pre>{{ heartRateRawJson }}</pre>
+        </ion-card-content>
+    </ion-card>
+
+
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Calories – Last 7 Days (Aggregated)</ion-card-title>
+        </ion-card-header>
+        <ion-card-content>
+            <p><strong>Total Calories (7-day sum):</strong> {{ calories | number: '1.0-2' }} kcal</p>
+
+            <ion-list *ngIf="caloriesPerDay.length">
+                <ion-list-header>Daily Calories Burned</ion-list-header>
+                <ion-item *ngFor="let item of caloriesPerDay">
+                    <ion-label>
+                        <p><strong>{{ item.date }}</strong>: {{ item.value | number: '1.0-2' }} kcal</p>
+                    </ion-label>
+                </ion-item>
+            </ion-list>
+
+            <p class="ion-margin-top"><strong>Calories Aggregated JSON:</strong></p>
+            <pre>{{ caloriesRawJson }}</pre>
+        </ion-card-content>
+    </ion-card>
+
+
+
+
+
 </ion-content>
